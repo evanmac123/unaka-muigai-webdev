@@ -13,7 +13,7 @@ var express = require('express');
 //     console.log("Connection succeeded, connected to db instance. Url is " + url);
 // });
 var connectionString = 'mongodb://127.0.0.1:27017/test';
-if(process.env.MONGOLAB_URI){
+if(process.env.MONGODB_URI){
     connectionString = process.env.MONGODB_URI
 }
 
