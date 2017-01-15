@@ -1,17 +1,21 @@
 var express = require('express');
-var mongoose = require('mongoose');
+//var mongoose = require('mongoose');
 
-var url = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/test';
-
-// Connect to the DB
-mongoose.connect(url);
-
-var db = mongoose.connection;
-
-db.on("error", console.error.bind(console, "connection error"));
-db.once("open", function(callback) {
-    console.log("Connection succeeded, connected to db instance. Url is " + url);
-});
+// var url = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/test';
+//
+// // Connect to the DB
+// mongoose.connect(url);
+//
+// var db = mongoose.connection;
+//
+// db.on("error", console.error.bind(console, "connection error"));
+// db.once("open", function(callback) {
+//     console.log("Connection succeeded, connected to db instance. Url is " + url);
+// });
+var connectionString = 'mongodb://127.0.0.1:27017/test';
+if(process.env.MONGOLAB_URI){
+    connectionString = process.env.MONGODB_URI
+}
 
 var app = express();
 
