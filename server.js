@@ -6,7 +6,12 @@ var url = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/test';
 // Connect to the DB
 mongoose.connect(url);
 
-//var db = mongoose.connection;
+var db = mongoose.connection;
+
+db.on("error", console.error.bind(console, "connection error"));
+db.once("open", function(callback) {
+    console.log("Connection succeeded, connected to db instance. Url is " + url);
+});
 
 var app = express();
 
@@ -18,30 +23,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
 require ("./test/app.js")(app);
-
-/*
-// require the mongodb native drivers.
-var mongodb = require('mongodb');
-
-var MongoClient = mongodb.MongoClient;
-
-// url for local database
-var url = 'mongodb://localhost:27017/test';
-
-// Use connect method to connect to the Server
-MongoClient.connect(url, function (err, db) {
-    if (err) {
-        console.log('Unable to connect to the mongoDB server. Error:', err);
-    } else {
-        console.log('Connection established to', url);
-
-        // do some work here with the database.
-
-        //Close connection
-        db.close();
-    }
-});
-*/
 
 var port = process.env.PORT || 3000;
 
