@@ -1,5 +1,5 @@
 var express = require('express');
-//var mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
 // var url = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/test';
 //
@@ -13,8 +13,8 @@ var express = require('express');
 //     console.log("Connection succeeded, connected to db instance. Url is " + url);
 // });
 var connectionString = 'mongodb://127.0.0.1:27017/test';
-if(process.env.MONGODB_URI){
-    connectionString = process.env.MONGODB_URI
+if(process.env.MONGODB_TEST_ADMIN){
+    connectionString = process.env.MONGODB_TEST_ADMIN;
 }
 
 var app = express();
