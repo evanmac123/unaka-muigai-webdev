@@ -14,7 +14,7 @@ var mongoose = require('mongoose');
 // });
 var connectionString = 'mongodb://127.0.0.1:27017/test';
 if(process.env.MONGODB_TEST_ADMIN){
-    connectionString = process.env.MONGODB_TEST_ADMIN;
+    var connectionString = process.env.MONGODB_TEST_ADMIN;
 }
 
 var app = express();
