@@ -77,10 +77,6 @@ a:hover {
     transform: rotate(-45deg);
 }
 
-nav ul li {
-    display: none;
-}
-
 .fullscreen-menu {
     height: 100vh;
     min-width: 100vw;
@@ -88,6 +84,21 @@ nav ul li {
     position: absolute!important;
     align-items: flex-start;
     -webkit-align-items: flex-start;
+}
+
+.fullscreen-menu-links {
+    clear: both;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column wrap;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-reg li {
+    display: none!important;
 }
 
 }

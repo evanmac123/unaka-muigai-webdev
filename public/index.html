@@ -11,7 +11,7 @@
 </head>
 <body ng-cloak ng-controller="HomeCtrl">
         <nav class="navbar navbar-static-top col-xs-12 flex">
-            <ul class="navbar-right col-md-4 col-xs-2 flex">
+            <ul class="navbar-right col-md-4 col-xs-2 flex nav-reg">
                 <li>
                     <a href="project/index.html">Project</a>
                 </li>
@@ -28,6 +28,8 @@
                     <span></span>
                 </a>
             </ul>
+            <ol class="fullscreen-menu-links">
+            </ol>
         </nav>
     <section class="col-xs-12">
         <h1>Web Dev Course Home Page for Muigai Unaka</h1>
@@ -49,19 +51,30 @@
     <script src="app.js"></script>
 
     <script type="text/javascript">
+        /** Moves links for mobile navigation */
+        function moveLinks(tar, list) {
+            $(tar).append(
+                $(list).each(function(i) {
+                    $(this).text();
+                })
+            );
+        }
+
         document.querySelector( "#nav-toggle" )
             .addEventListener( "click", function() {
                 this.classList.toggle( "active" );
+
                 if (this.classList.contains("active")) {
-                        $('ul li').each(function(i) {
-                            console.log($(this).innerHTML);
-                        })
+                    $("nav ul li").show();
                     $("nav").addClass("fullscreen-menu");
+                    moveLinks('.fullscreen-menu-links', 'nav ul li');
 
                 } else {
-                    console.log($("nav ul li").children.length);
                     $("nav").removeClass("fullscreen-menu");
+                    moveLinks('.nav-reg', 'nav ol li');
+                    //$("nav ul li").hide();
                 }
+
             });
     </script>
 </body>
